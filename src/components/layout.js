@@ -60,7 +60,6 @@ const Layout = ({ children }) => {
     dispatch({type: 'CURSOR_TYPE', cursorType: cursorType})
   }
   
-  
   return (
     <ThemeProvider 
       theme={
