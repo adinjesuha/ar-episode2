@@ -64,6 +64,6 @@ export const Cursor = styled.div`
     border: 4px solid ${props => props.theme.red};
   }
   &.pointer {
-    border: 4px solid ${props => props.theme.text} !important;
+    border: 4px solid ${props => props.theme.text} !important ;
   }
 `
