@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 // Styles
 import { Banner, Video, Canvas, BannerTitle, Headline } from '../../styles/homeStyles'
 // Custom Hook
-import useWindowSize from '../hooks/useWindowSize'
+import useWindowSize from '../../hooks/useWindowSize'
 // Context
 import { useGlobalStateContext } from '../../context/globalContext'
 
@@ -88,8 +88,8 @@ const HomeBanner = ({onCursor}) => {
       <Video>
         <video 
           src={require('../../assets/video/video.mp4')}
-          height='100%'
-          width='100%'
+          height="100%"
+          width="100%"
           loop
           autoPlay
         ></video>
@@ -98,7 +98,7 @@ const HomeBanner = ({onCursor}) => {
         ref={canvas}
         height={size.height}
         width={size.width}
-        onMouseEnter={() => onCursor('hovered')}
+        onMouseEnter={() => onCursor("hovered")}
         onMouseLeave={onCursor}
       />
       <BannerTitle variants={parent} initial='initial' animate='animate'>

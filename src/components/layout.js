@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { normalize } from 'styled-normalize'
 // Components
 import Header from './header'
+import Navigation from './navigation'
 import CustomCursor from './customCursor'
 // Context
 import { useGlobalStateContext, useGlobalDispatchContext } from  '../context/globalContext'
@@ -59,6 +60,8 @@ const Layout = ({ children }) => {
     cursorType = (cursorStyles.includes(cursorType) && cursorType) || false;
     dispatch({type: 'CURSOR_TYPE', cursorType: cursorType})
   }
+
+  const [ toggleMenu, setToggleMenu ] = useState(false)
   
   return (
     <ThemeProvider 
@@ -67,8 +70,17 @@ const Layout = ({ children }) => {
       }
     >
       <GlobalStyle />
-      <CustomCursor />
-      <Header onCursor={onCursor}/>
+      <CustomCursor toggleMenu={toggleMenu} />
+      <Header 
+        onCursor={onCursor} 
+        toggleMenu={toggleMenu} 
+        setToggleMenu={setToggleMenu}
+      />
+      <Navigation
+        onCursor={onCursor}
+        toggleMenu={toggleMenu} 
+        setToggleMenu={setToggleMenu}
+      />
       <main>{children}</main>
     </ThemeProvider>
   )

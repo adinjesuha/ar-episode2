@@ -7,7 +7,7 @@ import { useGlobalStateContext, useGlobalDispatchContext } from  '../context/glo
 import HomeBanner from "../components/homePage/homeBanner"
 
 const IndexPage = () => {
-  const { currentTheme, cursorStyles } = useGlobalStateContext();
+  const { cursorStyles } = useGlobalStateContext();
   const dispatch = useGlobalDispatchContext(); 
 
   const onCursor = cursorType => {
