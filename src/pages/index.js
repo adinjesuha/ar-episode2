@@ -3,8 +3,10 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 // Context
 import { useGlobalStateContext, useGlobalDispatchContext } from  '../context/globalContext'
-
+// Home Content
 import HomeBanner from "../components/homePage/homeBanner"
+import HomeContent from "../components/homePage/homeContent"
+import HomeFeatured from "../components/homePage/homeFeatured"
 
 const IndexPage = () => {
   const { cursorStyles } = useGlobalStateContext();
@@ -19,6 +21,8 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <HomeBanner onCursor={onCursor}/>
+      <HomeContent />
+      <HomeFeatured onCursor={onCursor}/>
     </Layout>
   )
 }
