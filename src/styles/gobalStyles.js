@@ -44,27 +44,36 @@ export const Flex = styled.div`
 `
 
 export const Cursor = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 400px;
+  left: 400px;
   width: 32px;
   height: 32px;
-  background: ${props => props.theme.red};
+  background: #ea281e;
   border-radius: 100%;
   transform: translate(-50%, -50%);
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-out;
   transition-property: width, height, border;
-  will-change: width, height, border;
+  will-change: width, height, transform, border;
   pointer-events: none;
   z-index: 999;
+  &.pointer {
+    border: 4px solid ${props => props.theme.text} !important;
+  }
   &.hovered {
     background: transparent !important;
     width: 56px;
-    height:56px;
-    border: 4px solid ${props => props.theme.red};
+    height: 56px;
+    border: 4px solid #ea281e;
+    border: 4px solid #ea281e;
   }
-  &.pointer {
-    border: 4px solid ${props => props.theme.text} !important ;
+  &.locked {
+    background: transparent !important;
+    width: 56px;
+    height: 56px;
+    border: 4px solid ${props => props.theme.text} !important;
+    top: ${props => props.theme.top} !important;
+    left: ${props => props.theme.left} !important;
   }
   &.nav-open {
     background: ${props => props.theme.text};

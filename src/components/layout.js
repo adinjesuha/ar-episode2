@@ -5,8 +5,9 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { normalize } from 'styled-normalize'
 // Components
 import Header from './header'
-import Navigation from './navigation'
 import CustomCursor from './customCursor'
+import Navigation from './navigation'
+import Footer from "./footer"
 // Context
 import { useGlobalStateContext, useGlobalDispatchContext } from  '../context/globalContext'
 
@@ -41,16 +42,25 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const [ toggleMenu, setToggleMenu ] = useState(false)
+  const [hamburgerPosition, setHamburgerPosition] = useState({
+    x: 0,
+    y: 0,
+  })
   
   const darkTheme = {
     background: '#000',
     text: '#fff',
     red: '#ea291e',
+    left: `${hamburgerPosition.x}px`,
+    top: `${hamburgerPosition.y}px`,
   }
   const lightTheme = {
     background: '#fff',
     text: '#000',
     red: '#ea291e',
+    left: `${hamburgerPosition.x}px`,
+    top: `${hamburgerPosition.y}px`,
   }
   
   const { currentTheme, cursorStyles } = useGlobalStateContext();
@@ -60,8 +70,6 @@ const Layout = ({ children }) => {
     cursorType = (cursorStyles.includes(cursorType) && cursorType) || false;
     dispatch({type: 'CURSOR_TYPE', cursorType: cursorType})
   }
-
-  const [ toggleMenu, setToggleMenu ] = useState(false)
   
   return (
     <ThemeProvider 
@@ -75,6 +83,9 @@ const Layout = ({ children }) => {
         onCursor={onCursor} 
         toggleMenu={toggleMenu} 
         setToggleMenu={setToggleMenu}
+        hamburgerPosition={hamburgerPosition}
+        setHamburgerPosition={setHamburgerPosition}
+        siteTitle={data.site.siteMetadata.title}
       />
       <Navigation
         onCursor={onCursor}
@@ -82,6 +93,7 @@ const Layout = ({ children }) => {
         setToggleMenu={setToggleMenu}
       />
       <main>{children}</main>
+      <Footer onCursor={onCursor}/>
     </ThemeProvider>
   )
 }
